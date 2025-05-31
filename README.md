@@ -87,23 +87,67 @@
 
 SeleniumFramework/
 │
+├── pom.xml
+├── .gitignore
+├── reports/
+│    └── ExtentManager.java
 ├── src/
 │   ├── main/
-│   │   └── java/com/yourcompany/
-│   │        ├── constants/
-│   │        ├── driver/
-│   │        ├── facade/
-│   │        ├── pages/
-│   │        │    ├── saucedemopages/
-│   │        │    ├── automationexercisepages/
-│   │        │    ├── liverpoolpages/
-│   │        └── utils/
+│   │   └── java/
+│   │        └── com/
+│   │             └── yourcompany/
+│   │                  ├── constants/
+│   │                  │    └── TestData.java
+│   │                  ├── driver/
+│   │                  │    └── DriverManager.java
+│   │                  ├── facade/
+│   │                  │    └── LoginFacade.java
+│   │                  ├── locators/
+│   │                  │    └── LoginLocators.java
+│   │                  ├── pages/
+│   │                  │    ├── saucedemopages/
+│   │                  │    │    └── LoginPageSauce.java
+│   │                  │    ├── automationexercisepages/
+│   │                  │    │    └── LoginPageAE.java
+│   │                  │    ├── liverpoolpages/
+│   │                  │    │    └── LoginPageLiverpool.java
+│   │                  │    └── LoginPage.java   # (interface)
+│   │                  └── utils/
+│   │                       └── ScreenshotUtil.java
 │   └── test/
-│        └── java/com/yourcompany/
-│             ├── base/
-│             ├── sauceTests/
-│             └── ...
-├── pom.xml
+│        └── java/
+│             └── com/
+│                  └── yourcompany/
+│                       ├── base/
+│                       │    └── BaseTest.java
+│                       ├── sauceTests/
+│                       │    └── LoginSauceTest.java
+│                       ├── liverpoolTests/
+│                       │    └── LoginLiverpoolTest.java
+│                       └── ... (other test packages and classes)
+│
+└── target/
+     └── surefire-reports/
+          ├── emailable-report.html
+          ├── index.html
+          └── ... (other test reports)
+
+# Keypoints
+### This structure is modular, follows best practices, and is ready for scaling and maintenance.
+
+- src/main/java/com/yourcompany/ contains all your main framework code:
+    - constants/: Centralized test data (URLs, credentials).
+    - driver/: WebDriver singleton manager.
+    - facade/: Facade pattern for login flows.
+    - locators/: Object repository for element locators.
+    - pages/: Page Object Model classes for each site.
+    -utils/: Utility classes (e.g., screenshots).
+- src/test/java/com/yourcompany/ contains all your test code:
+    -base/: Base test class (TestNG logic, setup/teardown).
+    - sauceTests/, liverpoolTests/, etc.: Test classes for each site or feature.
+- reports/: Contains ExtentManager (for ExtentReports setup).
+- target/surefire-reports/: Maven Surefire and TestNG test reports (auto-generated).
+- .gitignore: Should be at the root, alongside pom.xml.
 
 
 ## Framework Flow Diagram
