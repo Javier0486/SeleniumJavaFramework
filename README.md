@@ -1,4 +1,6 @@
 ## Use CMD terminal
+- Run all tests using Maven: mvn test
+- Run a specific test class: mvn -Dtest="*SauceEndToEndTest" test
 
 ## SOLID Principles
 
