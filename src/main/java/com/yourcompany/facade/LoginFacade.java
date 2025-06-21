@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.yourcompany.pages.saucedemopages.LoginPageSauce;
 import com.yourcompany.pages.LoginPage;
+import com.yourcompany.pages.LogoutPage;
 import com.yourcompany.pages.automationexercisepages.LoginPageAE;
 import com.yourcompany.pages.liverpoolpages.LoginPageLiverpool;
 
@@ -28,6 +29,11 @@ public class LoginFacade {
     public void loginToSauce(String user, String pass) {
         LoginPage loginPage = new LoginPageSauce(driver);
         loginPage.login(user, pass);
+    }
+
+    public void logoutFromSauce() {
+        LogoutPage logoutPage = new LoginPageSauce(driver);
+        logoutPage.logout();
     }
 
     public void loginToAE(String user, String pass) {

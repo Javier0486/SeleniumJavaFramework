@@ -18,6 +18,10 @@ public class ScreenshotUtil {
     public static void TakeScreenshot(WebDriver driver, String filePath) {
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
+            java.nio.file.Path dir = Paths.get(filePath).getParent();
+            if (dir != null && !Files.exists(dir)) {
+                Files.createDirectories(dir);
+            }
             Files.copy(screenshot.toPath(), Paths.get(filePath));
         } catch (IOException e) {
             e.printStackTrace();
