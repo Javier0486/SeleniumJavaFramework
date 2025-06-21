@@ -24,6 +24,9 @@ Thumbs.db
 Reports/
 *.html
 
+# images
+/screenshots
+
 # Selenium/WebDriver downloads
 webdriver.log
 
